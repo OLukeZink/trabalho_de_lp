@@ -1,12 +1,9 @@
 // Menu simples com 4 opcoes (inclui 'Sair')
 #include <iostream>
 #include <string>
-// Menu simples com 4 opcoes (inclui 'Sair')
-#include <iostream>
-#include <string>
 #include "../include/functions.h"
 
-inline void estatisticas() {
+void estatisticas() {
 	std::cout << "Funcao de estatisticas ainda nao implementada.\n";
 }
 
@@ -27,7 +24,7 @@ int main() {
 
 		std::string entrada;
 		if (!std::getline(std::cin, entrada)) {
-			std::cout << "Entrada encerrada. Saindo...\n";
+			std::cout << "Entrada encerrada....\n";
 			break;
 		}
 
@@ -46,7 +43,7 @@ int main() {
 				estatisticas();
 				break;
 			case 3:
-				configuracoes();
+				invert_case();
 				break;
 			case 4:
 				std::cout << "Saindo...\n";

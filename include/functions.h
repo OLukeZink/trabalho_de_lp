@@ -1,4 +1,4 @@
-// Implementacoes simples para o jogo Hot-n-Cold
+// Implementacoes inline para o jogo Hot-n-Cold e utilidades
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
@@ -6,6 +6,7 @@
 #include <string>
 #include <random>
 #include <cmath>
+#include <cctype>
 
 inline int gerar_numero(int min, int max) {
 	static std::random_device rd;
@@ -77,5 +78,32 @@ inline void jogar() {
 	}
 }
 
-#endif // FUNCTIONS_H
+inline void invert_case() {
+	std::cout << "\n-- Inverter maiusculas/minusculas --\n";
+	std::cout << "Digite uma linha para inverter o case (ou deixe vazia e pressione Enter para voltar):\n";
 
+	std::string linha;
+	if (!std::getline(std::cin, linha)) {
+		std::cout << "Entrada encerrada. Voltando ao menu...\n";
+		return;
+	}
+
+	if (linha.empty()) {
+		std::cout << "Voltando ao menu...\n";
+		return;
+	}
+
+	std::string out;
+	out.reserve(linha.size());
+	for (unsigned char ch : linha) {
+		if (std::islower(ch)) out.push_back(std::toupper(ch));
+		else if (std::isupper(ch)) out.push_back(std::tolower(ch));
+		else out.push_back(ch);
+	}
+
+	std::cout << "Resultado: " << out << "\n";
+	std::cout << "\nPressione Enter para voltar ao menu...";
+	std::getline(std::cin, linha);
+}
+
+#endif // FUNCTIONS_H
