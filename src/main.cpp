@@ -16,9 +16,9 @@ int main() {
 		std::cout << "========================\n";
 		std::cout << "       MENU PRINCIPAL   \n";
 		std::cout << "========================\n";
-		std::cout << "1) Jogar\n";
-		std::cout << "2) Estatisticas\n";
-		std::cout << "3) Configuracoes\n";
+	std::cout << "1) Jogar (Hot-n-Cold)\n";
+	std::cout << "2) Jogar (Inverter Letras)\n";
+	std::cout << "3) Configuracoes (Inverter Case)\n";
 		std::cout << "4) Sair\n";
 		std::cout << "Escolha uma opcao: ";
 
@@ -40,7 +40,7 @@ int main() {
 				jogar();
 				break;
 			case 2:
-				estatisticas();
+				jogar_inverter_letras();
 				break;
 			case 3:
 				invert_case();

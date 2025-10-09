@@ -7,6 +7,8 @@
 #include <random>
 #include <cmath>
 #include <cctype>
+#include <algorithm>
+#include <vector>
 
 inline int gerar_numero(int min, int max) {
 	static std::random_device rd;
@@ -104,6 +106,44 @@ inline void invert_case() {
 	std::cout << "Resultado: " << out << "\n";
 	std::cout << "\nPressione Enter para voltar ao menu...";
 	std::getline(std::cin, linha);
+}
+
+// Jogo: Inverter Letras - mostra palavra invertida e o jogador tenta adivinhar
+inline void jogar_inverter_letras() {
+	std::cout << "\n-- Inverter Letras (modo: você fornece a palavra) --\n";
+	std::cout << "Digite uma palavra para inverter (ou 0 para voltar ao menu):\n";
+
+	std::string linha;
+	while (true) {
+		std::cout << "Palavra: ";
+		if (!std::getline(std::cin, linha)) {
+			std::cout << "Entrada encerrada. Voltando ao menu...\n";
+			return;
+		}
+
+		// trim
+		size_t s = 0; while (s < linha.size() && std::isspace((unsigned char)linha[s])) ++s;
+		size_t e = linha.size(); while (e > s && std::isspace((unsigned char)linha[e-1])) --e;
+		std::string palavra = linha.substr(s, e - s);
+
+		if (palavra.empty()) {
+			std::cout << "Entrada vazia. Digite 0 para voltar ou uma palavra para inverter.\n";
+			continue;
+		}
+
+		if (palavra == "0") {
+			std::cout << "Voltando ao menu...\n";
+			return;
+		}
+
+		std::string invertida = palavra;
+		std::reverse(invertida.begin(), invertida.end());
+
+		std::cout << "Invertida: " << invertida << "\n";
+		std::cout << "\nPressione Enter para voltar ao menu...";
+		std::getline(std::cin, linha);
+		return;
+	}
 }
 
 #endif // FUNCTIONS_H
