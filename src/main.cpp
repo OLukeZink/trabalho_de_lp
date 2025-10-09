@@ -24,7 +24,7 @@ int main() {
 
 		std::string entrada;
 		if (!std::getline(std::cin, entrada)) {
-			std::cout << "Entrada encerrada. Saindo...\n";
+			std::cout << "Entrada encerrada....\n";
 			break;
 		}
 
